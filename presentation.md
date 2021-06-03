@@ -1,0 +1,1 @@
+- Checkbox required default value

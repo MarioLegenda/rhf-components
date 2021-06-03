@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "types": ["node"],
+    "rootDir": "src",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "target": "ES5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsxImportSource": "@emotion/react",
+    "jsx": "react",
+    "typeRoots": [
+      "types",
+      "node_modules/@prototyp/gatsby-plugin-gumball",
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "src",
+    "types",
+  ],
+  "exclude": ["node_modules", "public", ".cache"]
+}
