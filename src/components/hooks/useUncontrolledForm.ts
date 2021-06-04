@@ -10,7 +10,7 @@ export type ReactiveErrorHandler<T> = (
   setError: UseFormSetError<FieldValues>,
 ) => void;
 
-export type OnChangeHandler<T> = (value: T, isValid?: boolean) => void;
+export type OnChangeHandler<T> = (value: T, isValid: boolean) => void;
 
 export function useUncontrolledForm<T>(
   name: string,
@@ -29,11 +29,8 @@ export function useUncontrolledForm<T>(
   });
 
   useEffect(() => {
-    // 1. if there are constraints and an onChangeHandler, trigger validation
-    // 2. if there are constraints, but no onChangeHandler, trigger validation
-    // 3.
     if (onChangeHandler && !isFirstOnChange && !constraints) {
-      onChangeHandler(watchedValue ? watchedValue : '', undefined);
+      onChangeHandler(watchedValue ? watchedValue : '', true);
     }
 
     if (onChangeHandler && !isFirstOnChange && constraints) {

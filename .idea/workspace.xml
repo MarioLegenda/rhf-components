@@ -2,34 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b2eb5a9-5529-4ef3-99a4-edb9a202e601" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.stylelintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/presentation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CoreInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CoreTextare.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomCheckbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/BasicFormBuilder.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/useUncontrolledForm.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/TextInput.styles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/basic-form-builder.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/testing-ground.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/uncontrolled-extendable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/seo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/404.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page-2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/using-typescript.tsx" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/testing-form-builder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomCheckbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UncontrolledInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/BasicFormBuilder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormBuilder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/useUncontrolledForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useUncontrolledForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/basic-form-builder.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/testing-ground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/testing-ground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/uncontrolled-extendable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/uncontrolled-extendable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +53,9 @@
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -89,7 +73,9 @@
       <workItem from="1622481049319" duration="4873000" />
       <workItem from="1622527386345" duration="276000" />
       <workItem from="1622568397824" duration="2724000" />
-      <workItem from="1622711332017" duration="5203000" />
+      <workItem from="1622711332017" duration="7880000" />
+      <workItem from="1622741481683" duration="57000" />
+      <workItem from="1622794909783" duration="3807000" />
     </task>
     <servers />
   </component>

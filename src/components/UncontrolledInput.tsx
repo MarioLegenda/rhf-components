@@ -10,12 +10,6 @@ import {
 import { RegisterOptions } from 'react-hook-form';
 import { SerializedStyles } from '@emotion/react';
 import { CoreTextarea } from './CoreTextare';
-import { CustomCheckbox } from './CustomCheckbox';
-
-interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
-  view?: 'native' | 'custom';
-}
 
 interface TextareaProps<T>
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> {
@@ -31,9 +25,13 @@ interface TextareaProps<T>
   inputStyles?: SerializedStyles | SerializedStyles[];
 }
 
-type ExtendedInput<T> = TextareaProps<T> & InputProps;
+type ExtendedInput<T> = TextareaProps<T> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'value'>;
 
-export function Input<T, F extends ExtendedInput<T> = ExtendedInput<T>>({
+export function UncontrolledInput<
+  T,
+  F extends ExtendedInput<T> = ExtendedInput<T>,
+>({
   name,
   constraints,
   value,
@@ -43,7 +41,6 @@ export function Input<T, F extends ExtendedInput<T> = ExtendedInput<T>>({
   containerStyles,
   inputStyles,
   type,
-  view,
   ...rest
 }: F): React.ReactElement {
   const register = useUncontrolledForm<T>(
@@ -56,29 +53,16 @@ export function Input<T, F extends ExtendedInput<T> = ExtendedInput<T>>({
   );
 
   if (type !== 'textarea') {
-    if (type === 'checkbox' && view === 'custom') {
-      return (
-        <CustomCheckbox
-          containerStyles={containerStyles}
-          inputStyles={inputStyles}
-          registerOptions={register}
-          name={name}
-          type={type}
-          {...rest}
-        />
-      );
-    } else {
-      return (
-        <CoreInput
-          containerStyles={containerStyles}
-          inputStyles={inputStyles}
-          registerOptions={register}
-          name={name}
-          type={type}
-          {...rest}
-        />
-      );
-    }
+    return (
+      <CoreInput
+        containerStyles={containerStyles}
+        inputStyles={inputStyles}
+        registerOptions={register}
+        name={name}
+        type={type}
+        {...rest}
+      />
+    );
   } else {
     return (
       <CoreTextarea

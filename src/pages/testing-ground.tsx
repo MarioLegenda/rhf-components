@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { Input } from '../components/Input';
+import { UncontrolledInput } from '../components/UncontrolledInput';
 
 import * as styles from '../components/styles/TextInput.styles';
 
@@ -23,12 +23,7 @@ const TestingGround: React.FC = () => {
     },
   });
 
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
-
-  console.log(errors);
+  const { handleSubmit } = methods;
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -38,29 +33,25 @@ const TestingGround: React.FC = () => {
     <div>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input<string>
+          <UncontrolledInput<string>
             containerStyles={styles.container}
             inputStyles={styles.input}
-            constraints={{
-              minLength: {
-                value: 5,
-                message: 'Min length is 25',
-              },
-            }}
-            reactiveErrorHandler={(value, setError) => {
-              if (value && value.length > 10) {
-                setError('name', {
-                  type: 'manual',
-                  message: 'Max length is 10',
-                });
-              }
-            }}
             name="name"
             type="text"
             placeholder="Name"
+            reactiveHandlers={[
+              (value) => console.log('REACTIVE HANDLER 1 EXECUTED', value),
+              (value) => console.log('REACTIVE HANDLER 2 EXECUTED', value),
+            ]}
+            reactiveErrorHandler={(value) =>
+              console.log('REACTIVE ERROR HANDLER', value)
+            }
+            onChangeHandler={(value, isValid) =>
+              console.log('OnChangeHandler', value, isValid)
+            }
           />
 
-          <Input<string>
+          <UncontrolledInput<string>
             containerStyles={styles.container}
             inputStyles={styles.input}
             name="lastName"
@@ -68,9 +59,17 @@ const TestingGround: React.FC = () => {
             placeholder="Last name"
           />
 
-          <Input<boolean> name="acceptTerms" type="checkbox" value={false} />
+          <UncontrolledInput<boolean>
+            name="acceptTerms"
+            type="checkbox"
+            value={false}
+          />
 
-          <Input<string> name="description" type="textarea" value="" />
+          <UncontrolledInput<string>
+            name="description"
+            type="textarea"
+            value=""
+          />
 
           <button type="submit">Submit</button>
         </form>

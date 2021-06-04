@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { Input } from '../components/Input';
+import { UncontrolledInput } from '../components/UncontrolledInput';
 
 import * as styles from '../components/styles/TextInput.styles';
 
@@ -33,7 +33,7 @@ const UncontrolledExtendable: React.FC = () => {
     <div>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input<string>
+          <UncontrolledInput<string>
             containerStyles={styles.container}
             inputStyles={styles.input}
             name="name"
@@ -41,7 +41,7 @@ const UncontrolledExtendable: React.FC = () => {
             placeholder="Name"
           />
 
-          <Input<string>
+          <UncontrolledInput<string>
             containerStyles={styles.container}
             inputStyles={styles.input}
             name="lastName"
@@ -49,11 +49,19 @@ const UncontrolledExtendable: React.FC = () => {
             placeholder="Last name"
           />
 
-          <Input<boolean> name="acceptTerms" type="checkbox" value={false} />
+          <UncontrolledInput<boolean>
+            name="acceptTerms"
+            type="checkbox"
+            value={false}
+          />
 
-          <Input<string> name="description" type="textarea" value="" />
+          <UncontrolledInput<string>
+            name="description"
+            type="textarea"
+            value=""
+          />
 
-          <Input name="middleName" type="checkbox" />
+          <UncontrolledInput name="middleName" type="checkbox" />
 
           <button type="submit">Submit</button>
         </form>
