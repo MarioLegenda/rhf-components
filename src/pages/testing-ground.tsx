@@ -23,7 +23,10 @@ const TestingGround: React.FC = () => {
     },
   });
 
-  const { handleSubmit } = methods;
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -37,18 +40,15 @@ const TestingGround: React.FC = () => {
             containerStyles={styles.container}
             inputStyles={styles.input}
             name="name"
+            validateOnChange
             type="text"
+            constraints={{
+              minLength: {
+                value: 10,
+                message: 'minLength is 10',
+              },
+            }}
             placeholder="Name"
-            reactiveHandlers={[
-              (value) => console.log('REACTIVE HANDLER 1 EXECUTED', value),
-              (value) => console.log('REACTIVE HANDLER 2 EXECUTED', value),
-            ]}
-            reactiveErrorHandler={(value) =>
-              console.log('REACTIVE ERROR HANDLER', value)
-            }
-            onChangeHandler={(value, isValid) =>
-              console.log('OnChangeHandler', value, isValid)
-            }
           />
 
           <UncontrolledInput<string>

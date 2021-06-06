@@ -15,6 +15,7 @@ export type OnChangeHandler<T> = (value: T, isValid: boolean) => void;
 export function useUncontrolledForm<T>(
   name: string,
   value?: T,
+  validateOnChange = false,
   constraints?: RegisterOptions,
   onChangeHandler?: OnChangeHandler<T>,
   reactiveHandlers?: ReactiveHandler<T>[],
@@ -29,17 +30,22 @@ export function useUncontrolledForm<T>(
   });
 
   useEffect(() => {
-    if (onChangeHandler && !isFirstOnChange && !constraints) {
+    if (onChangeHandler && !isFirstOnChange && !validateOnChange) {
       onChangeHandler(watchedValue ? watchedValue : '', true);
     }
 
-    if (onChangeHandler && !isFirstOnChange && constraints) {
+    if (onChangeHandler && !isFirstOnChange && validateOnChange) {
       trigger(name).then((isValid) =>
         onChangeHandler(watchedValue ? watchedValue : '', isValid),
       );
     }
 
-    if (constraints && !onChangeHandler && !reactiveErrorHandler) {
+    if (
+      validateOnChange &&
+      !isFirstOnChange &&
+      !onChangeHandler &&
+      !reactiveErrorHandler
+    ) {
       trigger(name);
     }
 
@@ -54,9 +60,15 @@ export function useUncontrolledForm<T>(
     }
 
     if (reactiveErrorHandler) {
-      trigger(name).then(() => {
-        reactiveErrorHandler(watchedValue, setError);
-      });
+      if (validateOnChange) {
+        trigger(name).then(() => {
+          reactiveErrorHandler(watchedValue, setError);
+        });
+
+        return;
+      }
+
+      reactiveErrorHandler(watchedValue, setError);
     }
   }, [watchedValue]);
 

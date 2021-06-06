@@ -24,7 +24,7 @@ const TestingFormBuilder: React.FC = () => {
 
   return (
     <div>
-      <FormBuilder<FormValues, TransformedFormValues>
+      <FormBuilder<TransformedFormValues, FormValues>
         onSubmit={onSubmit}
         transformers={[
           async (data: FormValues) => {
@@ -52,26 +52,6 @@ const TestingFormBuilder: React.FC = () => {
               onChangeHandler={(value, isValid) =>
                 console.log('OnChangeHandler', value, isValid)
               }
-            />
-
-            <UncontrolledInput<string>
-              containerStyles={styles.container}
-              inputStyles={styles.input}
-              name="lastName"
-              type="text"
-              placeholder="Last name"
-            />
-
-            <UncontrolledInput<boolean>
-              name="acceptTerms"
-              type="checkbox"
-              value={false}
-            />
-
-            <UncontrolledInput<string>
-              name="description"
-              type="textarea"
-              value=""
             />
 
             <button type="submit">Submit</button>

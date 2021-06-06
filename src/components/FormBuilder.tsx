@@ -7,15 +7,15 @@ import {
 import { useForm, FormProvider } from 'react-hook-form';
 import React from 'react';
 
-type Transformer<T, F> = (value: T | FieldValues) => F;
+type Transformer<F, T> = (value: T | FieldValues) => F;
 
-type ExtendedType<T, F> = UseFormProps<T, any> & {
+type ExtendedType<F, T> = UseFormProps<T, any> & {
   component: (form: UseFormReturn<T>) => React.ReactNode;
   onSubmit: SubmitHandler<F>;
   transformers?: Transformer<T, F>[];
 };
 
-export function FormBuilder<T = FieldValues, F = any>({
+export function FormBuilder<F, T = FieldValues>({
   mode,
   reValidateMode,
   resolver,
@@ -27,7 +27,7 @@ export function FormBuilder<T = FieldValues, F = any>({
   component,
   onSubmit,
   transformers,
-}: ExtendedType<T, F>) {
+}: ExtendedType<F, T>) {
   const methods = useForm<T>({
     context: context,
     mode: mode,
@@ -40,8 +40,6 @@ export function FormBuilder<T = FieldValues, F = any>({
   });
 
   const { handleSubmit } = methods;
-
-  console.log(component);
 
   const onInternalSubmit = async (data: T | FieldValues) => {
     let result = data;

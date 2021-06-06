@@ -36,6 +36,7 @@ export function UncontrolledInput<
   constraints,
   value,
   onChangeHandler,
+  validateOnChange,
   reactiveHandlers,
   reactiveErrorHandler,
   containerStyles,
@@ -46,6 +47,7 @@ export function UncontrolledInput<
   const register = useUncontrolledForm<T>(
     name,
     value,
+    validateOnChange,
     constraints,
     onChangeHandler,
     reactiveHandlers,
