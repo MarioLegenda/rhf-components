@@ -14,7 +14,7 @@ import { CoreTextarea } from './CoreTextare';
 interface TextareaProps<T>
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> {
   name: string;
-  type: 'text' | 'checkbox' | 'radio' | 'textarea';
+  type: 'text' | 'checkbox' | 'radio' | 'textarea' | 'select' | 'password';
   value?: T;
   constraints?: RegisterOptions;
   validateOnChange?: boolean;

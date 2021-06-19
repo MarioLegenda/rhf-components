@@ -15,7 +15,7 @@ interface Props
   type: 'text' | 'checkbox' | 'radio' | 'textarea' | 'select' | 'password';
 }
 
-export const CoreInput: React.FC<Props> = ({
+export const CoreSelect: React.FC<Props> = ({
   name,
   registerOptions,
   defaultValue,
