@@ -1,15 +1,12 @@
 import React from 'react';
-import { UncontrolledInput } from '../components/UncontrolledInput';
+import { UncontrolledInput } from '../components/complex/UncontrolledInput';
 
 import * as styles from '../components/styles/TextInput.styles';
-import { FormBuilder } from '../components/FormBuilder';
+import { FormBuilder } from '../components/shared/FormBuilder';
 
 interface FormValues {
-  acceptTerms: boolean;
   name: string;
   lastName: string;
-  radioButton: string;
-  description: string;
 }
 
 interface TransformedFormValues {
@@ -26,6 +23,10 @@ const TestingFormBuilder: React.FC = () => {
     <div>
       <FormBuilder<TransformedFormValues, FormValues>
         onSubmit={onSubmit}
+        defaultValues={{
+          name: '',
+          lastName: '',
+        }}
         transformers={[
           async (data: FormValues) => {
             return {
@@ -40,17 +41,37 @@ const TestingFormBuilder: React.FC = () => {
               containerStyles={styles.container}
               inputStyles={styles.input}
               name="name"
+              value=""
               type="text"
               placeholder="Name"
               reactiveHandlers={[
                 (value) => console.log('REACTIVE HANDLER 1 EXECUTED', value),
                 (value) => console.log('REACTIVE HANDLER 2 EXECUTED', value),
               ]}
-              reactiveErrorHandler={(value) =>
-                console.log('REACTIVE ERROR HANDLER', value)
+              reactiveErrorHandler={(values, setError) =>
+                console.log('REACTIVE ERROR HANDLER', values)
               }
               onChangeHandler={(value, isValid) =>
                 console.log('OnChangeHandler', value, isValid)
+              }
+            />
+
+            <UncontrolledInput<string>
+              containerStyles={styles.container}
+              inputStyles={styles.input}
+              name="lastName"
+              value=""
+              type="text"
+              placeholder="Last name"
+              reactiveHandlers={[
+                (value) => console.log('REACTIVE HANDLER 1 EXECUTED', value),
+                (value) => console.log('REACTIVE HANDLER 2 EXECUTED', value),
+              ]}
+              reactiveErrorHandler={(value, setError) =>
+                console.log('REACTIVE ERROR HANDLER', value)
+              }
+              onChangeHandler={(values, isValid) =>
+                console.log('OnChangeHandler', values, isValid)
               }
             />
 

@@ -1,15 +1,15 @@
 import React, { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
-import { CoreInput } from './CoreInput';
+import { CoreInput } from '../shared/CoreInput';
 
 import {
   OnChangeHandler,
   ReactiveErrorHandler,
   ReactiveHandler,
   useUncontrolledForm,
-} from './hooks/useUncontrolledForm';
+} from '../hooks/useUncontrolledForm';
 import { RegisterOptions } from 'react-hook-form';
 import { SerializedStyles } from '@emotion/react';
-import { CoreTextarea } from './CoreTextare';
+import { CoreTextarea } from '../shared/CoreTextare';
 
 interface TextareaProps<T>
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> {
@@ -20,7 +20,7 @@ interface TextareaProps<T>
   validateOnChange?: boolean;
   onChangeHandler?: OnChangeHandler<T>;
   reactiveHandlers?: ReactiveHandler<T>[];
-  reactiveErrorHandler?: ReactiveErrorHandler<T>;
+  reactiveErrorHandler?: ReactiveErrorHandler;
   containerStyles?: SerializedStyles | SerializedStyles[];
   inputStyles?: SerializedStyles | SerializedStyles[];
 }
@@ -28,10 +28,7 @@ interface TextareaProps<T>
 type ExtendedInput<T> = TextareaProps<T> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'value'>;
 
-export function UncontrolledInput<
-  T,
-  F extends ExtendedInput<T> = ExtendedInput<T>,
->({
+export function UncontrolledInput<T>({
   name,
   constraints,
   value,
@@ -43,7 +40,7 @@ export function UncontrolledInput<
   inputStyles,
   type,
   ...rest
-}: F): React.ReactElement {
+}: ExtendedInput<T>): React.ReactElement {
   const register = useUncontrolledForm<T>(
     name,
     value,

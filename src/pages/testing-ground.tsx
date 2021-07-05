@@ -1,8 +1,9 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { UncontrolledInput } from '../components/UncontrolledInput';
+import { UncontrolledInput } from '../components/complex/UncontrolledInput';
 
 import * as styles from '../components/styles/TextInput.styles';
+import { ControllerCheckbox } from '../components/complex/ControllerCheckbox';
 
 interface FormValues {
   acceptTerms: boolean;
@@ -36,41 +37,6 @@ const TestingGround: React.FC = () => {
     <div>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <UncontrolledInput<string>
-            containerStyles={styles.container}
-            inputStyles={styles.input}
-            name="name"
-            validateOnChange
-            type="text"
-            constraints={{
-              minLength: {
-                value: 10,
-                message: 'minLength is 10',
-              },
-            }}
-            placeholder="Name"
-          />
-
-          <UncontrolledInput<string>
-            containerStyles={styles.container}
-            inputStyles={styles.input}
-            name="lastName"
-            type="text"
-            placeholder="Last name"
-          />
-
-          <UncontrolledInput<boolean>
-            name="acceptTerms"
-            type="checkbox"
-            value={false}
-          />
-
-          <UncontrolledInput<string>
-            name="description"
-            type="textarea"
-            value=""
-          />
-
           <button type="submit">Submit</button>
         </form>
       </FormProvider>

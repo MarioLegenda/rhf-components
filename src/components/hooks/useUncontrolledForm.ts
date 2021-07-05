@@ -5,8 +5,8 @@ import { FieldValues } from 'react-hook-form/dist/types';
 
 export type ReactiveHandler<T> = (value: T) => void;
 
-export type ReactiveErrorHandler<T> = (
-  value: T,
+export type ReactiveErrorHandler = (
+  values: FieldValues,
   setError: UseFormSetError<FieldValues>,
 ) => void;
 
@@ -19,9 +19,10 @@ export function useUncontrolledForm<T>(
   constraints?: RegisterOptions,
   onChangeHandler?: OnChangeHandler<T>,
   reactiveHandlers?: ReactiveHandler<T>[],
-  reactiveErrorHandler?: ReactiveErrorHandler<T>,
+  reactiveErrorHandler?: ReactiveErrorHandler,
 ) {
-  const { setValue, trigger, control, register, setError } = useFormContext();
+  const { setValue, trigger, control, register, setError, getValues } =
+    useFormContext();
   const [isFirstOnChange, setIsFirstOnChange] = useState(true);
   const watchedValue = useWatch({
     control,
@@ -68,7 +69,9 @@ export function useUncontrolledForm<T>(
         return;
       }
 
-      reactiveErrorHandler(watchedValue, setError);
+      const values = getValues();
+      values[name] = watchedValue;
+      reactiveErrorHandler(values, setError);
     }
   }, [watchedValue]);
 

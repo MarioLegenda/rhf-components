@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { UncontrolledInput } from '../components/UncontrolledInput';
+import { UncontrolledInput } from '../components/complex/UncontrolledInput';
 
 import * as styles from '../components/styles/TextInput.styles';
 
